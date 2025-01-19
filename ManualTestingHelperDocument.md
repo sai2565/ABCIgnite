@@ -60,7 +60,7 @@ This document provides a detailed manual testing guide for the Class Booking Sys
 **Sample Request Body:**
 ```json
 {
-  "memberName": "John Doe",
+  "memberName": "Sharan",
   "classId": "1737285020539-0.5471042612337986",
   "participationDate": "2025-02-20"
 }
@@ -127,7 +127,7 @@ This document provides a detailed manual testing guide for the Class Booking Sys
 ```json
 [
   {
-    "memberName": "John Doe",
+    "memberName": "Sharan",
     "classId": "1737285020539-0.5471042612337986",
     "participationDate": "2025-02-20",
     "bookedOn": "2025-01-19T10:00:00.000Z",
