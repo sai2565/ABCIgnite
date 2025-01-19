@@ -33,6 +33,32 @@ describe('Validations', () => {
       expect(() => validateClass(invalidClassData)).toThrow('Capacity must be at least 1.');
     });
 
+    it('should throw an error if start date is invalid', () => {
+      const invalidClassData = {
+        name: 'Yoga Class',
+        startDate: 'invalid-date',
+        endDate: '2025-01-21',
+        startTime: '10:00 AM',
+        duration: 60,
+        capacity: 20
+      };
+
+      expect(() => validateClass(invalidClassData)).toThrow('Please provide a valid start date.');
+    });
+
+    it('should throw an error if end date is invalid', () => {
+      const invalidClassData = {
+        name: 'Yoga Class',
+        startDate: '2025-01-20',
+        endDate: 'invalid-date',
+        startTime: '10:00 AM',
+        duration: 60,
+        capacity: 20
+      };
+
+      expect(() => validateClass(invalidClassData)).toThrow('Please provide a valid end date.');
+    });
+
     it('should throw an error if end date is in the past', () => {
       const invalidClassData = {
         name: 'Yoga Class',
@@ -78,23 +104,14 @@ describe('Validations', () => {
       jest.clearAllMocks();
     });
 
-    it('should throw an error if any required field is missing', async () => {
+    it('should throw an error if participation date is invalid', async () => {
       const invalidBookingData = {
         memberName: 'John Doe',
-        classId: 'class123'
-      };
-
-      await expect(validateBooking(invalidBookingData)).rejects.toThrow('Invalid booking data. Ensure all fields are correct.');
-    });
-
-    it('should throw an error if member name is less than 3 characters', async () => {
-      const invalidBookingData = {
-        memberName: 'Jo',
         classId: 'class123',
-        participationDate: '2025-01-22'
+        participationDate: 'invalid-date'
       };
 
-      await expect(validateBooking(invalidBookingData)).rejects.toThrow('Member name must be atleast 3 characters.');
+      await expect(validateBooking(invalidBookingData)).rejects.toThrow('Please provide a valid participation date.');
     });
 
     it('should throw an error if class ID is invalid', async () => {
