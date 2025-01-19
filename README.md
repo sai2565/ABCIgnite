@@ -40,14 +40,14 @@ The system includes:
      ```json
      [
        {
-         "id": 1,
-         "name": "Yoga Class",
-         "startDate": "2025-02-01",
-         "endDate": "2025-02-28",
-         "startTime": "10:00 AM",
-         "duration": 60,
-         "capacity": 10
-       }
+        "name": "Yoga Class",
+        "startDate": "2025-02-01T00:00:00.000Z",
+        "endDate": "2025-02-28T00:00:00.000Z",
+        "startTime": "10:00 AM",
+        "duration": 60,
+        "capacity": 10,
+        "id": "1737285020539-0.5471042612337986"
+      }
      ]
      ```
 
@@ -68,11 +68,11 @@ The system includes:
      - Duplicate bookings for the same member on the same date are not allowed.
    - Sample Request Body:
      ```json
-     {
-       "memberName": "John Doe",
-       "classId": 1,
-       "participationDate": "2025-02-05"
-     }
+      {
+        "memberName": "Sharan",
+        "classId": "1737285020539-0.5471042612337986",
+        "participationDate": "2025-02-20"
+      }
      ```
 
 2. **Search Bookings**
@@ -91,15 +91,17 @@ The system includes:
    - Sample Response:
      ```json
      [
-       {
-         "memberName": "John Doe",
-         "classId": 1,
-         "className": "Yoga Class",
-         "classStartTime": "10:00 AM",
-         "classStartDate": "2025-02-01",
-         "classEndDate": "2025-02-28",
-         "participationDate": "2025-02-05"
-       }
+      {
+        "memberName": "Sharan",
+        "classId": "1737285020539-0.5471042612337986",
+        "participationDate": "2025-02-20T00:00:00.000Z",
+        "bookedOn": "2025-01-19T11:11:38.503Z",
+        "id": "1737285098503-0.07342564777621208",
+        "className": "Yoga Class",
+        "classStartTime": "10:00 AM",
+        "classStartDate": "2025-02-01T00:00:00.000Z",
+        "classEndDate": "2025-02-28T00:00:00.000Z"
+      }
      ]
      ```
 
