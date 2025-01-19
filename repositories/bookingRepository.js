@@ -34,7 +34,6 @@ const findBookingsByFilter = async ({ memberName, startDate, endDate }) => {
     const classes = await classRepository.getClasses(Array.from(classIds));
     const transformedBookings =  filteredBookings.map((b) => {
         const classInstance = classes.find((c) => c.id === b.classId);
-        console.log(classInstance);
         b.className = classInstance.name;
         b.classStartTime = classInstance.startTime;
         b.classStartDate = classInstance.startDate;

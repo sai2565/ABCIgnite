@@ -5,61 +5,86 @@ exports.validateClass = (classData) => {
     const { name, startDate, endDate, startTime, duration, capacity } = classData;
   
     if (!name || !startDate || !endDate || !startTime || !duration || !capacity) {
-        throw new Error('Invalid class data. Ensure all fields are correct.');
+        const error = new Error('Invalid class data. Ensure all fields are correct.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 
-    if(capacity < 1){
-        throw new Error('Capacity must be at least 1.');
+    if (capacity < 1) {
+        const error = new Error('Capacity must be at least 1.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
     if (new Date(endDate) <= new Date()) {
-        throw new Error('End date must be in the future.');
+        const error = new Error('End date must be in the future.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 
     if (new Date(startDate) > new Date(endDate)) {
-        throw new Error('Start date must be before end date.');
+        const error = new Error('Start date must be before end date.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 };
 
 exports.validateBooking = async (bookingData) => {
     const { memberName, classId, participationDate } = bookingData;
     if (!memberName || !classId || !participationDate) {
-        throw new Error('Invalid booking data. Ensure all fields are correct.');
+        const error = new Error('Invalid booking data. Ensure all fields are correct.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
-    if(memberName.length < 3){
-        throw new Error('Member name must be atleast 3 characters.');
+    if (memberName.length < 3) {
+        const error = new Error('Member name must be at least 3 characters.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
     const classes = await classRepository.filterClasses({ id: classId });
     if (classes.length === 0) {
-        throw new Error('Invalid class ID.');
+        const error = new Error('Invalid class ID.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 
     const classData = classes[0];
-    const bookings = await bookingRepository.filterBookings({ classId : classId, participationDate: new Date(participationDate).toISOString()});
+    const bookings = await bookingRepository.filterBookings({ classId: classId, participationDate: new Date(participationDate).toISOString() });
     if (bookings.length >= classData.capacity) {
-        throw new Error('Class is full.');
+        const error = new Error('Class is full.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 
     bookings.forEach((booking) => {
         if (booking.memberName === memberName) {
-            throw new Error('Member already booked for this class on the given date.');
+            const error = new Error('Member already booked for this class on the given date.');
+            error.type = 'VALIDATION_FAILED';
+            throw error;
         }
     });
 
-    if (new Date(participationDate)<= new Date()) {
-        throw new Error('Participation date must be in the future.');
+    if (new Date(participationDate) <= new Date()) {
+        const error = new Error('Participation date must be in the future.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 
     if (new Date(participationDate) < new Date(classData.startDate) || new Date(participationDate) > new Date(classData.endDate)) {
-        throw new Error('Participation date must be within class date range.');
+        const error = new Error('Participation date must be within class date range.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 };
 
 exports.validateFilter = (filter) => {
-    if(filter.memberName && filter.memberName.length < 3){
-        throw new Error('Please provide a valid member name.');
-
+    if (filter.memberName && filter.memberName.length < 3) {
+        const error = new Error('Please provide a valid member name.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
     if (filter.startDate && filter.endDate && new Date(filter.startDate) > new Date(filter.endDate)) {
-        throw new Error('Start date must be before end date.');
+        const error = new Error('Start date must be before end date.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
     }
 };
