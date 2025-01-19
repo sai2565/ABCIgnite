@@ -55,7 +55,7 @@ exports.validateBooking = async (bookingData) => {
         throw error;
     }
     if (memberName.length < 3) {
-        const error = new Error('Member name must be atleast 3 characters.');
+        const error = new Error('Member name must be atleast 3 characters long.');
         error.type = 'VALIDATION_FAILED';
         throw error;
     }
@@ -68,7 +68,7 @@ exports.validateBooking = async (bookingData) => {
 
     const classes = await classRepository.filterClasses({ id: classId });
     if (classes.length === 0) {
-        const error = new Error('Invalid class ID.');
+        const error = new Error('Class ID does not exist.');
         error.type = 'VALIDATION_FAILED';
         throw error;
     }
@@ -96,7 +96,7 @@ exports.validateBooking = async (bookingData) => {
     }
 
     if (new Date(participationDate) < new Date(classData.startDate) || new Date(participationDate) > new Date(classData.endDate)) {
-        const error = new Error('Participation date must be within class date range.');
+        const error = new Error('Participation date must be within the class date range.');
         error.type = 'VALIDATION_FAILED';
         throw error;
     }

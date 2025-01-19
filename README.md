@@ -175,11 +175,10 @@ All errors are returned as JSON responses with appropriate HTTP status codes.
 
 ---
 # **Manual Testing Helper**
----
 
 ## **Test Environment**
 - **Base URL:** http://localhost:3000
-- **Tools:** Postman or any REST client, JSON validator
+- **Tools:** Postman, Bruno or any REST client, JSON validator
 - **Dependencies:** Ensure all dependencies are installed, and the server is running before testing.
 
 ---
@@ -206,11 +205,10 @@ All errors are returned as JSON responses with appropriate HTTP status codes.
 | **#** | **Test Case Description**                         | **Input Data**                                    | **Expected Outcome**                                                                 |
 |-------|---------------------------------------------------|--------------------------------------------------|-------------------------------------------------------------------------------------|
 | 1     | Create a valid class                              | Valid data as shown above                        | Class is created successfully with a 201 status.                                   |
-| 2     | Missing required fields                          | Omit `name`                                      | Returns 400 status with an error: "Name is required."                              |
-| 3     | Capacity less than 1                             | Set `capacity` to 0                              | Returns 400 status with an error: "Capacity must be at least 1."                   |
+| 2     | Missing required fields                          | Omit `name`                                      | Returns 400 status with an error: "Invalid class data. Ensure all fields are correct."                              |
+| 3     | Capacity less than 1                             | Set `capacity` to -1                              | Returns 400 status with an error: "Capacity must be at least 1."                   |
 | 4     | End date is in the past                          | Set `endDate` to "2023-12-31"                    | Returns 400 status with an error: "End date must be in the future."                |
 | 5     | Start date is after end date                     | Set `startDate` to "2025-03-01"                 | Returns 400 status with an error: "Start date must be before the end date."         |
-| 6     | Invalid duration                                 | Set `duration` to "two hours"                   | Returns 400 status with an error: "Duration must be a valid number."               |
 
 ---
 
@@ -242,12 +240,13 @@ All errors are returned as JSON responses with appropriate HTTP status codes.
 | **#** | **Test Case Description**                         | **Input Data**                                     | **Expected Outcome**                                                                 |
 |-------|---------------------------------------------------|---------------------------------------------------|-------------------------------------------------------------------------------------|
 | 1     | Create a valid booking                           | Valid data as shown above                         | Booking is created successfully with a 201 status.                                  |
-| 2     | Missing required fields                          | Omit `memberName`                                 | Returns 400 status with an error: "Member name is required."                        |
+| 2     | Missing required fields                          | Omit `memberName`                                 | Returns 400 status with an error: "Invalid booking data. Ensure all fields are correct."                        |
 | 3     | Invalid member name length                       | Set `memberName` to "JD"                         | Returns 400 status with an error: "Member name must be at least 3 characters long." |
 | 4     | Invalid class ID                                 | Set `classId` to "invalid-class-id"              | Returns 400 status with an error: "Class ID does not exist."                        |
-| 5     | Participation date outside class date range      | Set `participationDate` to "2025-03-01"          | Returns 400 status with an error: "Participation date must be within the class date range." |
-| 6     | Duplicate booking                                | Repeat booking data as above                     | Returns 400 status with an error: "Duplicate booking for the same member."          |
-| 7     | Booking exceeds class capacity                  | Book a class beyond its capacity                 | Returns 400 status with an error: "Class capacity exceeded."                        |
+| 5     | Participation date in the past                   | Set `participationDate` to "2023-03-01"          | Returns 400 status with an error: "Participation date must be in the future." |
+| 6     | Participation date outside class date range      | Set `participationDate` to "2025-03-01"          | Returns 400 status with an error: "Participation date must be within the class date range." |
+| 7     | Duplicate booking                                | Repeat booking data as above                     | Returns 400 status with an error: "Member already booked for this class on the given date."          |
+| 8     | Booking exceeds class capacity                  | Book a class beyond its capacity                 | Returns 400 status with an error: "Class is full."                        |
 
 ---
 
