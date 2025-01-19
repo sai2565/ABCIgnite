@@ -68,8 +68,8 @@ The system includes:
   - `participationDate`:
     - Must be in valid Date format.
     - Must be within the date range of the class.
-    - Cannot be in the past.
-  - Bookings cannot exceed the class capacity.
+    - Must be in the future.
+  - Bookings for a date cannot exceed the class capacity.
   - Duplicate bookings for the same member on the same date are not allowed.
 - **Sample Request Body:**
   ```json
@@ -162,7 +162,7 @@ The system includes:
 ---
 
 ## **Error Handling**
-All errors are returned as JSON responses with appropriate HTTP status codes.
+All errors are returned as JSON responses with appropriate HTTP status codes by the error handler middleware.
 - **400 Bad Request:** Validation errors or invalid input data.
 - **500 Internal Server Error:** Unexpected server errors.
 
