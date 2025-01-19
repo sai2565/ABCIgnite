@@ -178,8 +178,8 @@ All errors are returned as JSON responses with appropriate HTTP status codes.
 
 ## **Test Environment**
 - **Base URL:** http://localhost:3000
-- **Tools:** Postman, Bruno or any REST client, JSON validator
-- **Dependencies:** Ensure all dependencies are installed, and the server is running before testing.
+- **Tools:** Postman, Bruno or any REST client
+- **Dependencies:** Ensure all dependencies are installed, and the server is running before testing. ( Refer to Setup and Usage for steps )
 
 ---
 
