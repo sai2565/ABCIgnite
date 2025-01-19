@@ -26,7 +26,7 @@ exports.validateBooking = async (bookingData) => {
         throw new Error('Invalid booking data. Ensure all fields are correct.');
     }
     if(memberName.length < 3){
-        throw new Error('Please provide a valid member name.');
+        throw new Error('Member name must be atleast 3 characters.');
     }
     const classes = await classRepository.filterClasses({ id: classId });
     if (classes.length === 0) {
