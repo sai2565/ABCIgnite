@@ -70,7 +70,7 @@ The system includes:
     - Must be within the date range of the class.
     - Must be in the future.
   - Bookings for a date cannot exceed the class capacity.
-  - Duplicate bookings for the same member on the same date are not allowed.
+  - Member can book multiple classes for same date and time but duplicate bookings for the same class for same member on the same date are not allowed.
 - **Sample Request Body:**
   ```json
   {
