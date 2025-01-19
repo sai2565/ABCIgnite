@@ -1,7 +1,7 @@
-const bookingController = require('../controllers/bookingController');
-const bookingService = require('../services/bookingService');
+const bookingController = require('../../controllers/bookingController');
+const bookingService = require('../../services/bookingService');
 
-jest.mock('../services/bookingService');
+jest.mock('../../services/bookingService');
 
 describe('BookingController', () => {
   let mockReq, mockRes, mockNext;

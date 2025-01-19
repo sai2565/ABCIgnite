@@ -1,9 +1,9 @@
-const { validateClass, validateBooking, validateFilter } = require('../utils/validations');
-const classRepository = require('../repositories/classRepository');
-const bookingRepository = require('../repositories/bookingRepository');
+const { validateClass, validateBooking, validateFilter } = require('../../utils/validations');
+const classRepository = require('../../repositories/classRepository');
+const bookingRepository = require('../../repositories/bookingRepository');
 
-jest.mock('../repositories/classRepository');
-jest.mock('../repositories/bookingRepository');
+jest.mock('../../repositories/classRepository');
+jest.mock('../../repositories/bookingRepository');
 
 describe('Validations', () => {
 

@@ -1,9 +1,9 @@
-const BookingService = require('../services/bookingService');
-const bookingRepository = require('../repositories/bookingRepository');
-const { validateBooking, validateFilter } = require('../utils/validations');
+const BookingService = require('../../services/bookingService');
+const bookingRepository = require('../../repositories/bookingRepository');
+const { validateBooking, validateFilter } = require('../../utils/validations');
 
-jest.mock('../repositories/bookingRepository');
-jest.mock('../utils/validations');
+jest.mock('../../repositories/bookingRepository');
+jest.mock('../../utils/validations');
 
 describe('BookingService', () => {
   afterEach(() => {

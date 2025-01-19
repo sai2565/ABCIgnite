@@ -1,9 +1,9 @@
-const ClassService = require('../services/classService');
-const classRepository = require('../repositories/classRepository');
-const { validateClass } = require('../utils/validations');
+const ClassService = require('../../services/classService');
+const classRepository = require('../../repositories/classRepository');
+const { validateClass } = require('../../utils/validations');
 
-jest.mock('../repositories/classRepository');
-jest.mock('../utils/validations');
+jest.mock('../../repositories/classRepository');
+jest.mock('../../utils/validations');
 
 describe('ClassService', () => {
   afterEach(() => {

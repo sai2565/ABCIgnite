@@ -1,7 +1,7 @@
-const classController = require('../controllers/classController');
-const classService = require('../services/classService');
+const classController = require('../../controllers/classController');
+const classService = require('../../services/classService');
 
-jest.mock('../services/classService');
+jest.mock('../../services/classService');
 
 describe('ClassController', () => {
   let mockReq, mockRes, mockNext;
