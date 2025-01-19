@@ -1,7 +1,7 @@
 {
-  "name": "abcignite",
+  "name": "class-booking-system",
   "version": "1.0.0",
-  "description": "ABC fitness take home assignment",
+  "description": "ABC fitness take home assignment. This is a class booking system.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -9,22 +9,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sai2565/ABCIgnite.git"
+    "url": "git+https://github.com/sai2565/class-booking-system.git"
   },
   "keywords": [
-    "ABC",
-    "Ignite"
+    "ABC Fitness",
+    "class-booking-system"
   ],
   "author": "Sai Sharan Beepeta (saisharan2565@gmail.com)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/sai2565/ABCIgnite/issues"
+    "url": "https://github.com/sai2565/class-booking-system/issues"
   },
-  "homepage": "https://github.com/sai2565/ABCIgnite#readme",
+  "homepage": "https://github.com/sai2565/class-booking-system#readme",
   "dependencies": {
     "body-parser": "^1.20.3",
     "express": "^4.21.2",
-    "jest": "^29.7.0",
-    "node-mocks-http": "^1.16.2"
+    "jest": "^29.7.0"
   }
 }

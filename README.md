@@ -114,11 +114,11 @@ The system includes:
 ### **Installation**
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sai2565/ABCIgnite.git
+   git clone https://github.com/sai2565/class-booking-system.git
    ```
 2. Navigate to the project directory:
    ```bash
-   cd ABCIgnite
+   cd class-booking-system
    ```
 3. Install dependencies:
    ```bash
