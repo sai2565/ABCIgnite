@@ -1,0 +1,30 @@
+{
+  "name": "abcignite",
+  "version": "1.0.0",
+  "description": "ABC fitness take home assignment",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sai2565/ABCIgnite.git"
+  },
+  "keywords": [
+    "ABC",
+    "Ignite"
+  ],
+  "author": "Sai Sharan Beepeta (saisharan2565@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sai2565/ABCIgnite/issues"
+  },
+  "homepage": "https://github.com/sai2565/ABCIgnite#readme",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "jest": "^29.7.0",
+    "node-mocks-http": "^1.16.2"
+  }
+}
