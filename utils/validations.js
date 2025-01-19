@@ -1,11 +1,30 @@
 const classRepository = require('../repositories/classRepository');
 const bookingRepository = require('../repositories/bookingRepository');
+const {isValidDate} = require('../utils/dateUtils');
 
 exports.validateClass = (classData) => {
     const { name, startDate, endDate, startTime, duration, capacity } = classData;
   
     if (!name || !startDate || !endDate || !startTime || !duration || !capacity) {
         const error = new Error('Invalid class data. Ensure all fields are correct.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
+    }
+
+    if (name.length < 3) {
+        const error = new Error('Name must be atleast 3 characters.');
+        error.type = 'VALIDATION_FAILED';
+        throw error;
+    }
+
+    if(!isValidDate(startDate)) {
+        const error = new Error('Please provide a valid start date.');
+        error.type = 'VALIDATION_FAILED';
+        throw error
+    }
+
+    if(!isValidDate(endDate)) {
+        const error = new Error('Please provide a valid end date.');
         error.type = 'VALIDATION_FAILED';
         throw error;
     }
@@ -36,10 +55,17 @@ exports.validateBooking = async (bookingData) => {
         throw error;
     }
     if (memberName.length < 3) {
-        const error = new Error('Member name must be at least 3 characters.');
+        const error = new Error('Member name must be atleast 3 characters.');
         error.type = 'VALIDATION_FAILED';
         throw error;
     }
+
+    if(!isValidDate(participationDate)) {
+        const error = new Error('Please provide a valid participation date.');
+        error.type = 'VALIDATION_FAILED';
+        throw error
+    }
+
     const classes = await classRepository.filterClasses({ id: classId });
     if (classes.length === 0) {
         const error = new Error('Invalid class ID.');
@@ -48,7 +74,7 @@ exports.validateBooking = async (bookingData) => {
     }
 
     const classData = classes[0];
-    const bookings = await bookingRepository.filterBookings({ classId: classId, participationDate: new Date(participationDate).toISOString() });
+    const bookings = await bookingRepository.filterBookings({ classId: classId, participationDate: participationDate});
     if (bookings.length >= classData.capacity) {
         const error = new Error('Class is full.');
         error.type = 'VALIDATION_FAILED';
