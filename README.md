@@ -168,7 +168,3 @@ Sample Error Response:
 ```
 
 ---
-
-## **Conclusion**
-This API provides a robust foundation for managing classes and bookings with clear validations and easy-to-use endpoints. Feel free to extend this functionality by adding more features like user authentication, advanced filters, or analytics.
-
