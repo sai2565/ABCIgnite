@@ -123,7 +123,7 @@ describe('Validations', () => {
         participationDate: '2025-01-22'
       };
 
-      await expect(validateBooking(invalidBookingData)).rejects.toThrow('Invalid class ID.');
+      await expect(validateBooking(invalidBookingData)).rejects.toThrow('Class ID does not exist.');
     });
 
     it('should throw an error if class is full', async () => {
