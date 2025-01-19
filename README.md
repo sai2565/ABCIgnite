@@ -306,6 +306,3 @@ All errors are returned as JSON responses with appropriate HTTP status codes by 
   }
 ]
 ```
-
----
-
