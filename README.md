@@ -241,7 +241,7 @@ All errors are returned as JSON responses with appropriate HTTP status codes by 
 |-------|---------------------------------------------------|---------------------------------------------------|-------------------------------------------------------------------------------------|
 | 1     | Create a valid booking                           | Valid data as shown above                         | Booking is created successfully with a 201 status.                                  |
 | 2     | Missing required fields                          | Omit `memberName`                                 | Returns 400 status with an error: "Invalid booking data. Ensure all fields are correct."                        |
-| 3     | Invalid member name length                       | Set `memberName` to "JD"                         | Returns 400 status with an error: "Member name must be at least 3 characters long." |
+| 3     | Invalid member name length                       | Set `memberName` to "SS"                         | Returns 400 status with an error: "Member name must be at least 3 characters long." |
 | 4     | Invalid class ID                                 | Set `classId` to "invalid-class-id"              | Returns 400 status with an error: "Class ID does not exist."                        |
 | 5     | Participation date in the past                   | Set `participationDate` to "2023-03-01"          | Returns 400 status with an error: "Participation date must be in the future." |
 | 6     | Participation date outside class date range      | Set `participationDate` to "2025-03-01"          | Returns 400 status with an error: "Participation date must be within the class date range." |
@@ -255,13 +255,13 @@ All errors are returned as JSON responses with appropriate HTTP status codes by 
 
 **Sample Query Parameters:**
 ```
-?memberName=John&startDate=2025-02-01&endDate=2025-02-28
+?memberName=Sharan&startDate=2025-02-01&endDate=2025-02-28
 ```
 
 **Test Cases:**
 | **#** | **Test Case Description**                         | **Query Parameters**                              | **Expected Outcome**                                                                 |
 |-------|---------------------------------------------------|---------------------------------------------------|-------------------------------------------------------------------------------------|
-| 1     | Search by valid member name                      | `memberName=John`                                | Returns a 200 status with matching bookings.                                         |
+| 1     | Search by valid member name                      | `memberName=Sharan`                                | Returns a 200 status with matching bookings.                                         |
 | 2     | Search by valid date range                       | `startDate=2025-02-01&endDate=2025-02-28`        | Returns a 200 status with bookings within the date range.                           |
 | 3     | Search with no filters                           | No query parameters                              | Returns a 200 status with all bookings.                                             |
 | 4     | Search with invalid date range                  | `startDate=2025-03-01&endDate=2025-02-01`        | Returns 400 status with an error: "Start date must be before end date."             |
