@@ -98,18 +98,6 @@ This document provides a detailed manual testing guide for the Class Booking Sys
 
 ---
 
-## **Edge Cases**
-1. **File Not Found:**
-   - If `classes.json` or `bookings.json` is missing, the API should return a 500 status with an appropriate error message.
-2. **Corrupted Data:**
-   - If the JSON files contain invalid data, the API should gracefully handle the error and return a 500 status.
-3. **Concurrent Requests:**
-   - Test concurrent booking creation requests to ensure data integrity (e.g., class capacity enforcement).
-4. **Large Data Volume:**
-   - Populate the data files with hundreds of classes/bookings to test performance.
-
----
-
 ## **Test Data**
 ### **Sample Classes:**
 ```json
