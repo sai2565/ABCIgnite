@@ -164,7 +164,6 @@ The system includes:
 ## **Error Handling**
 All errors are returned as JSON responses with appropriate HTTP status codes.
 - **400 Bad Request:** Validation errors or invalid input data.
-- **404 Not Found:** Resource not found.
 - **500 Internal Server Error:** Unexpected server errors.
 
 **Sample Error Response:**
